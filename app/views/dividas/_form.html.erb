@@ -1,0 +1,30 @@
+<div class="container">
+  <%= form_with(model: divida, local: true) do |form| %>
+    <% if divida.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(divida.errors.count, "error") %> prohibited this divida from being saved:</h2>
+        <ul>
+          <% divida.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.label :preco %>
+      <%= form.number_field :preco, step: :any, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :descricao %>
+      <%= form.text_field :descricao, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :cliente_id %>
+      <%= form.select(:cliente_id, Cliente.all.collect { |c| [c.nome, c.id] }, {}, {class: "form-control"}) %>
+    </div>
+    <div class="btn-group">
+      <%= link_to "Back", dividas_path, class: "btn btn-danger" %>
+      <%= form.submit class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>

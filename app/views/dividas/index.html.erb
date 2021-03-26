@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>Dividas</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Preco</th>
+      <th>Descricao</th>
+      <th>Cliente</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @dividas.each do |divida| %>
+      <tr>
+        <td><%= divida.preco %></td>
+        <td><%= divida.descricao %></td>
+        <td><%= divida.cliente.nome %></td>
+        <td><%= link_to 'Show', divida %></td>
+        <td><%= link_to 'Edit', edit_divida_path(divida) %></td>
+        <td><%= link_to 'Destroy', divida, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Divida', new_divida_path, class: "btn btn-primary" %>
+</div>
